@@ -5,16 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CrySense by Addapt</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 :root {
---purple-deep: #630570;
---purple-light: #f28eff;
---gradient: linear-gradient(180deg, #f28eff 0%, #630570 100%);
---bg-dark: #0d000f;
---white: #f5f0f7;
---white-dim: rgba(245, 240, 247, 0.6);
---white-faint: rgba(245, 240, 247, 0.1);
+--bg: #fdfaf8;
+--bg-alt: #fff8f5;
+--text: #1c1a2e;
+--text-soft: #6b6880;
+--purple: #7b5ea7;
+--purple-dark: #630570;
+--purple-light: #c8b6e2;
+--peach: #ffb5a0;
+--pink: #f4acb7;
+--warm: #ffd6a5;
+--white: #ffffff;
+--card-bg: rgba(255,255,255,0.75);
+--shadow: 0 4px 32px rgba(100,80,140,0.10);
+--shadow-hover: 0 12px 48px rgba(100,80,140,0.18);
+--radius: 20px;
+--container: 1100px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,8 +32,8 @@ html { scroll-behavior: smooth; }
 body {
 font-family: 'Urbanist', sans-serif;
 font-weight: 400;
-background-color: var(--bg-dark);
-color: var(--white);
+background-color: var(--bg);
+color: var(--text);
 overflow-x: hidden;
 }
 
@@ -33,7 +42,7 @@ img { max-width: 100%; display: block; }
 
 .container {
 width: 100%;
-max-width: 1120px;
+max-width: var(--container);
 margin: 0 auto;
 padding: 0 48px;
 }
@@ -44,573 +53,26 @@ top: 0;
 left: 0;
 width: 100%;
 z-index: 100;
-padding: 22px 48px;
+padding: 16px 48px;
 display: flex;
 align-items: center;
 justify-content: space-between;
-background: linear-gradient(to bottom, rgba(13,0,15,0.96) 0%, transparent 100%);
+background: rgba(253,250,248,0.88);
+backdrop-filter: blur(14px);
+border-bottom: 1px solid rgba(200,182,226,0.2);
 }
 
-.nav-logo img { height: 50px; }
+.nav-logo img { height: 48px; }
 
 .nav-links {
 display: flex;
-gap: 40px;
-font-size: 0.82rem;
-font-weight: 500;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(--white-dim);
-}
-
-.nav-links a { transition: color 0.2s; }
-.nav-links a:hover { color: var(--white); }
-
-.hero {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-text-align: center;
-padding: 140px 48px 100px;
-background:
-  radial-gradient(ellipse 70% 55% at 50% 5%, rgba(242,142,255,0.2) 0%, transparent 65%),
-  radial-gradient(ellipse 50% 40% at 50% 100%, rgba(99,5,112,0.5) 0%, transparent 65%),
-  var(--bg-dark);
-}
-
-.eyebrow {
-font-size: 0.75rem;
-font-weight: 500;
-letter-spacing: 0.24em;
-text-transform: uppercase;
-color: var(--purple-light);
-margin-bottom: 28px;
-}
-
-.hero h1 {
-font-size: clamp(2.8rem, 7vw, 6rem);
-font-weight: 300;
-line-height: 1.08;
-max-width: 800px;
-margin-bottom: 28px;
-}
-
-.hero h1 strong {
-font-weight: 700;
-background: var(--gradient);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-
-.hero-sub {
-font-size: 1.1rem;
-font-weight: 400;
-color: var(--white-dim);
-max-width: 500px;
-line-height: 1.8;
-margin-bottom: 52px;
-}
-
-.hero-tagline {
-display: inline-block;
-font-size: 0.82rem;
-font-weight: 500;
-letter-spacing: 0.08em;
-color: rgba(245,240,247,0.35);
-margin-top: 40px;
-padding-top: 40px;
-border-top: 1px solid var(--white-faint);
-}
-
-.btn-row {
-display: flex;
-gap: 16px;
-flex-wrap: wrap;
-justify-content: center;
-}
-
-.btn-fill {
-display: inline-block;
-padding: 15px 44px;
-background: var(--gradient);
-color: var(--white);
-font-family: 'Urbanist', sans-serif;
-font-size: 0.85rem;
-font-weight: 600;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-border: none;
-cursor: pointer;
-transition: opacity 0.2s;
-border-radius: 2px;
-}
-
-.btn-fill:hover { opacity: 0.82; color: var(--white); }
-
-.btn-ghost {
-display: inline-block;
-padding: 14px 42px;
-background: transparent;
-color: var(--white);
-font-family: 'Urbanist', sans-serif;
-font-size: 0.85rem;
-font-weight: 500;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-border: 1px solid rgba(242,142,255,0.35);
-cursor: pointer;
-transition: border-color 0.2s, background 0.2s;
-border-radius: 2px;
-}
-
-.btn-ghost:hover {
-border-color: var(--purple-light);
-background: rgba(242,142,255,0.06);
-color: var(--white);
-}
-
-.section-label {
-display: block;
-font-size: 0.72rem;
-font-weight: 600;
-letter-spacing: 0.24em;
-text-transform: uppercase;
-color: var(--purple-light);
-margin-bottom: 18px;
-}
-
-.section-title {
-font-size: clamp(1.9rem, 3.5vw, 3rem);
-font-weight: 300;
-line-height: 1.18;
-color: var(--white);
-margin-bottom: 20px;
-}
-
-.section-body {
-font-size: 1rem;
-font-weight: 400;
-color: var(--white-dim);
-line-height: 1.85;
-}
-
-.divider {
-width: 44px;
-height: 2px;
-background: var(--gradient);
-margin: 0 auto 16px;
-}
-
-.product-section {
-background: linear-gradient(180deg, #630570 0%, #3d0349 100%);
-padding: 100px 0;
-}
-
-.product-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 80px;
-align-items: center;
-}
-
-.product-concept {
-font-size: clamp(1.4rem, 2.6vw, 2rem);
-font-weight: 300;
-font-style: italic;
-color: var(--purple-light);
-margin-bottom: 24px;
-line-height: 1.35;
-}
-
-.product-name {
-font-size: clamp(2rem, 4vw, 3.2rem);
-font-weight: 700;
-color: var(--white);
-margin-bottom: 20px;
-letter-spacing: -0.01em;
-}
-
-.product-body {
-font-size: 1rem;
-color: rgba(245,240,247,0.78);
-line-height: 1.85;
-margin-bottom: 16px;
-}
-
-.email-form {
-display: flex;
-margin-top: 36px;
-max-width: 400px;
-}
-
-.email-form input {
-flex: 1;
-padding: 14px 18px;
-background: rgba(245,240,247,0.08);
-border: 1px solid rgba(242,142,255,0.3);
-border-right: none;
-color: var(--white);
-font-family: 'Urbanist', sans-serif;
-font-size: 0.92rem;
-outline: none;
-border-radius: 2px 0 0 2px;
-}
-
-.email-form input::placeholder { color: rgba(245,240,247,0.4); }
-
-.email-form button {
-padding: 14px 22px;
-background: var(--purple-light);
-border: none;
-color: var(--purple-deep);
-font-family: 'Urbanist', sans-serif;
-font-size: 0.8rem;
-font-weight: 700;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-cursor: pointer;
-transition: opacity 0.2s;
-white-space: nowrap;
-border-radius: 0 2px 2px 0;
-}
-
-.email-form button:hover { opacity: 0.85; }
-
-.email-caption {
-font-size: 0.78rem;
-color: rgba(245,240,247,0.4);
-margin-top: 10px;
-}
-
-.how-it-works-card {
-border: 1px solid rgba(242,142,255,0.2);
-padding: 40px 36px;
-background: rgba(0,0,0,0.15);
-border-radius: 4px;
-}
-
-.how-it-works-card .section-label { margin-bottom: 28px; }
-
-.step {
-padding-bottom: 24px;
-margin-bottom: 24px;
-border-bottom: 1px solid rgba(245,240,247,0.08);
-}
-
-.step:last-child {
-padding-bottom: 0;
-margin-bottom: 0;
-border-bottom: none;
-}
-
-.step-num {
-font-size: 0.7rem;
-font-weight: 600;
-letter-spacing: 0.18em;
-color: var(--purple-light);
-margin-bottom: 6px;
-}
-
-.step-title {
-font-size: 1rem;
-font-weight: 600;
-color: var(--white);
-margin-bottom: 6px;
-}
-
-.step-body {
-font-size: 0.9rem;
-color: rgba(245,240,247,0.65);
-line-height: 1.7;
-}
-
-.benefits-section {
-background-color: var(--bg-dark);
-padding: 100px 0;
-}
-
-.benefits-header {
-text-align: center;
-margin-bottom: 60px;
-}
-
-.benefits-grid {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 1px;
-background: var(--white-faint);
-border: 1px solid var(--white-faint);
-}
-
-.benefit-card {
-background: var(--bg-dark);
-padding: 44px 32px;
-transition: background 0.25s;
-}
-
-.benefit-card:hover { background: rgba(99,5,112,0.22); }
-
-.benefit-num {
-font-size: 3rem;
-font-weight: 300;
-background: var(--gradient);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-line-height: 1;
-margin-bottom: 24px;
-display: block;
-}
-
-.benefit-card h4 {
-font-size: 1.05rem;
-font-weight: 600;
-color: var(--white);
-margin-bottom: 14px;
-}
-
-.benefit-card p {
-font-size: 0.9rem;
-color: var(--white-dim);
-line-height: 1.78;
-}
-
-.about-section {
-background: linear-gradient(180deg, var(--bg-dark) 0%, #1c0022 100%);
-padding: 100px 0;
-}
-
-.about-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 100px;
-align-items: start;
-}
-
-.about-quote {
-font-size: clamp(1rem, 1.8vw, 1.2rem);
-font-weight: 400;
-font-style: italic;
-line-height: 1.85;
-color: var(--white);
-border-left: 3px solid var(--purple-light);
-padding-left: 28px;
-margin-bottom: 32px;
-}
-
-.about-closing {
-font-size: 1rem;
-color: var(--white-dim);
-line-height: 1.85;
-}
-
-.pillar {
-margin-bottom: 36px;
-padding-bottom: 36px;
-border-bottom: 1px solid var(--white-faint);
-}
-
-.pillar:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-
-.pillar-label {
-font-size: 0.7rem;
-font-weight: 600;
-letter-spacing: 0.22em;
-text-transform: uppercase;
-color: var(--purple-light);
-margin-bottom: 12px;
-display: block;
-}
-
-.pillar p {
-font-size: 0.96rem;
-color: var(--white-dim);
-line-height: 1.85;
-}
-
-.contact-section {
-background-color: var(--bg-dark);
-border-top: 1px solid var(--white-faint);
-padding: 90px 0 56px;
-}
-
-.contact-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 80px;
-margin-bottom: 72px;
-}
-
-.contact-heading {
-font-size: 1.9rem;
-font-weight: 300;
-margin-bottom: 14px;
-}
-
-.contact-body {
-font-size: 0.95rem;
-color: var(--white-dim);
-line-height: 1.8;
-margin-bottom: 28px;
-}
-
-.contact-row {
+gap: 36px;
 font-size: 0.88rem;
-color: var(--white-dim);
-margin-bottom: 10px;
-}
-
-.contact-row strong {
-color: var(--purple-light);
 font-weight: 600;
-font-size: 0.7rem;
-letter-spacing: 0.16em;
+letter-spacing: 0.05em;
 text-transform: uppercase;
-margin-right: 10px;
+color: var(--text-soft);
 }
-
-.socials {
-display: flex;
-gap: 20px;
-margin-top: 28px;
-}
-
-.socials a {
-font-size: 0.78rem;
-font-weight: 500;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(--white-dim);
-border-bottom: 1px solid transparent;
-padding-bottom: 2px;
-transition: color 0.2s, border-color 0.2s;
-}
-
-.socials a:hover { color: var(--purple-light); border-color: var(--purple-light); }
-
-.newsletter-label {
-font-size: 1.5rem;
-font-weight: 300;
-margin-bottom: 12px;
-}
-
-.newsletter-body {
-font-size: 0.94rem;
-color: var(--white-dim);
-line-height: 1.78;
-margin-bottom: 28px;
-}
-
-.footer-bar {
-padding-top: 32px;
-border-top: 1px solid var(--white-faint);
-display: flex;
-align-items: center;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 16px;
-}
-
-.footer-bar img { height: 30px; opacity: 0.65; }
-.footer-bar p { font-size: 0.78rem; color: var(--white-dim); }
-
-.footer-links { display: flex; gap: 24px; }
-
-.footer-links a {
-font-size: 0.78rem;
-color: var(--white-dim);
-transition: color 0.2s;
-}
-
-.footer-links a:hover { color: var(--white); }
-
-@media (max-width: 900px) {
-.container { padding: 0 28px; }
-nav { padding: 20px 28px; }
-.nav-links { display: none; }
-.product-grid { grid-template-columns: 1fr; gap: 48px; }
-.benefits-grid { grid-template-columns: 1fr 1fr; }
-.about-grid { grid-template-columns: 1fr; gap: 48px; }
-.contact-grid { grid-template-columns: 1fr; gap: 48px; }
-.hero { padding: 120px 28px 80px; }
-}
-
-@media (max-width: 560px) {
-.benefits-grid { grid-template-columns: 1fr; }
-.btn-row { flex-direction: column; align-items: center; }
-.email-form { flex-direction: column; max-width: 100%; }
-.email-form input { border-right: 1px solid rgba(242,142,255,0.3); border-bottom: none; border-radius: 2px 2px 0 0; }
-.email-form button { border-radius: 0 0 2px 2px; }
-.footer-bar { flex-direction: column; text-align: center; }
-.footer-links { justify-content: center; }
-}
-
-.fade-in {
-opacity: 0;
-transform: translateY(28px);
-transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.fade-in.visible {
-opacity: 1;
-transform: translateY(0);
-}
-
-.fade-in-delay-1 { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-.fade-in-delay-3 { transition-delay: 0.3s; }
-.fade-in-delay-4 { transition-delay: 0.4s; }
-
-.hero-content > * {
-opacity: 0;
-transform: translateY(20px);
-animation: heroFadeIn 0.8s ease forwards;
-}
-
-.hero-content > *:nth-child(1) { animation-delay: 0.1s; }
-.hero-content > *:nth-child(2) { animation-delay: 0.25s; }
-.hero-content > *:nth-child(3) { animation-delay: 0.4s; }
-.hero-content > *:nth-child(4) { animation-delay: 0.55s; }
-.hero-content > *:nth-child(5) { animation-delay: 0.7s; }
-
-@keyframes heroFadeIn {
-to { opacity: 1; transform: translateY(0); }
-}
-
-.benefit-card {
-background: var(--bg-dark);
-padding: 44px 32px;
-transition: background 0.25s, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.benefit-card:hover {
-background: rgba(99,5,112,0.22);
-transform: scale(1.04);
-box-shadow: 0 8px 40px rgba(99,5,112,0.3);
-}
-
-.step {
-padding-bottom: 24px;
-margin-bottom: 24px;
-border-bottom: 1px solid rgba(245,240,247,0.08);
-transition: padding-left 0.25s ease;
-}
-
-.step:hover { padding-left: 8px; }
-.step:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: none; }
-
-.pillar {
-margin-bottom: 36px;
-padding-bottom: 36px;
-border-bottom: 1px solid var(--white-faint);
-transition: border-color 0.25s ease;
-}
-
-.pillar:hover { border-color: rgba(242,142,255,0.3); }
-.pillar:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 
 .nav-links a {
 position: relative;
@@ -623,34 +85,514 @@ position: absolute;
 bottom: -3px;
 left: 0;
 width: 0;
-height: 1px;
-background: var(--purple-light);
+height: 2px;
+background: var(--purple);
+border-radius: 2px;
 transition: width 0.25s ease;
 }
 
+.nav-links a:hover { color: var(--purple); }
 .nav-links a:hover::after { width: 100%; }
 
-.btn-fill, .btn-ghost {
-transition: opacity 0.2s, transform 0.2s ease;
+.blob {
+position: absolute;
+border-radius: 50%;
+filter: blur(70px);
+opacity: 0.55;
+pointer-events: none;
 }
 
-.btn-fill:hover { opacity: 0.82; transform: translateY(-2px); }
-.btn-ghost:hover { transform: translateY(-2px); }
+.hero {
+position: relative;
+min-height: 100vh;
+display: flex;
+align-items: center;
+padding: 120px 48px 80px;
+overflow: hidden;
+background: var(--bg);
+}
+
+.hero-blob-1 {
+width: 500px; height: 500px;
+background: radial-gradient(circle, #ffd6a5 0%, #ffb5a0 60%, transparent 100%);
+top: -100px; right: -80px;
+}
+
+.hero-blob-2 {
+width: 400px; height: 400px;
+background: radial-gradient(circle, #c8b6e2 0%, #f4acb7 70%, transparent 100%);
+bottom: -80px; left: 10%;
+}
+
+.hero-inner {
+position: relative;
+z-index: 2;
+max-width: var(--container);
+margin: 0 auto;
+width: 100%;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 60px;
+align-items: center;
+}
+
+.hero-left { display: flex; flex-direction: column; }
+
+.hero-eyebrow {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+font-size: 0.78rem;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(--purple);
+background: rgba(123,94,167,0.08);
+padding: 8px 16px;
+border-radius: 100px;
+margin-bottom: 28px;
+width: fit-content;
+}
+
+.hero h1 {
+font-size: clamp(2.4rem, 5vw, 4rem);
+font-weight: 800;
+line-height: 1.1;
+color: var(--text);
+margin-bottom: 24px;
+}
+
+.hero h1 span {
+color: var(--purple);
+}
+
+.hero-sub {
+font-size: 1.1rem;
+font-weight: 400;
+color: var(--text-soft);
+line-height: 1.8;
+margin-bottom: 40px;
+max-width: 460px;
+}
+
+.hero-tagline {
+font-size: 0.85rem;
+font-weight: 500;
+color: var(--text-soft);
+margin-top: 20px;
+padding-top: 20px;
+border-top: 1px solid rgba(200,182,226,0.4);
+}
+
+.btn-row {
+display: flex;
+gap: 14px;
+flex-wrap: wrap;
+}
+
+.btn-fill {
+display: inline-block;
+padding: 15px 36px;
+background: var(--purple);
+color: var(--white);
+font-family: 'Urbanist', sans-serif;
+font-size: 0.9rem;
+font-weight: 700;
+letter-spacing: 0.04em;
+border: none;
+cursor: pointer;
+border-radius: 100px;
+transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+box-shadow: 0 4px 20px rgba(123,94,167,0.3);
+}
+
+.btn-fill:hover {
+background: var(--purple-dark);
+transform: translateY(-2px);
+box-shadow: 0 8px 28px rgba(123,94,167,0.35);
+color: var(--white);
+}
+
+.btn-ghost {
+display: inline-block;
+padding: 14px 34px;
+background: transparent;
+color: var(--purple);
+font-family: 'Urbanist', sans-serif;
+font-size: 0.9rem;
+font-weight: 600;
+letter-spacing: 0.04em;
+border: 2px solid var(--purple-light);
+cursor: pointer;
+border-radius: 100px;
+transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.btn-ghost:hover {
+border-color: var(--purple);
+background: rgba(123,94,167,0.06);
+transform: translateY(-2px);
+color: var(--purple);
+}
+
+.hero-right {
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+}
+
+.hero-mockup {
+width: 100%;
+max-width: 360px;
+filter: drop-shadow(0 24px 60px rgba(100,80,140,0.22));
+animation: floatPhone 4s ease-in-out infinite;
+}
+
+@keyframes floatPhone {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-14px); }
+}
+
+.section-label {
+display: inline-block;
+font-size: 0.72rem;
+font-weight: 700;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(--purple);
+background: rgba(123,94,167,0.08);
+padding: 6px 14px;
+border-radius: 100px;
+margin-bottom: 16px;
+}
+
+.section-title {
+font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+font-weight: 800;
+line-height: 1.18;
+color: var(--text);
+margin-bottom: 16px;
+}
+
+.section-body {
+font-size: 1rem;
+font-weight: 400;
+color: var(--text-soft);
+line-height: 1.85;
+}
+
+section { padding: 96px 0; }
+
+.product-section {
+position: relative;
+background: var(--bg-alt);
+overflow: hidden;
+}
+
+.product-blob {
+width: 600px; height: 600px;
+background: radial-gradient(circle, #ffd6a5 0%, #ffb5a0 50%, transparent 100%);
+top: -150px; right: -150px;
+}
+
+.product-blob-2 {
+width: 400px; height: 400px;
+background: radial-gradient(circle, #c8b6e2 0%, transparent 100%);
+bottom: -100px; left: -100px;
+}
+
+.product-grid {
+position: relative;
+z-index: 2;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: center;
+}
+
+.crysense-logo-row {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 16px;
+margin-bottom: 24px;
+}
+
+.crysense-logo-row img {
+height: 300px;
+}
+
+.product-concept {
+font-size: clamp(1.1rem, 2vw, 1.45rem);
+font-weight: 600;
+font-style: italic;
+color: var(--purple);
+margin-bottom: 20px;
+line-height: 1.4;
+}
+
+.product-name {
+font-size: clamp(2rem, 4vw, 3rem);
+font-weight: 800;
+color: var(--text);
+margin-bottom: 20px;
+}
+
+.product-body {
+font-size: 1rem;
+color: var(--text-soft);
+line-height: 1.85;
+margin-bottom: 16px;
+}
+
+.email-form {
+display: flex;
+margin-top: 32px;
+max-width: 400px;
+border-radius: 100px;
+overflow: hidden;
+box-shadow: 0 4px 20px rgba(100,80,140,0.12);
+background: var(--white);
+}
+
+.email-form input {
+flex: 1;
+padding: 14px 22px;
+background: transparent;
+border: none;
+color: var(--text);
+font-family: 'Urbanist', sans-serif;
+font-size: 0.92rem;
+outline: none;
+}
+
+.email-form input::placeholder { color: #b0adc0; }
+
+.email-form button {
+padding: 14px 24px;
+background: var(--purple);
+border: none;
+color: var(--white);
+font-family: 'Urbanist', sans-serif;
+font-size: 0.82rem;
+font-weight: 700;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+cursor: pointer;
+border-radius: 100px;
+margin: 4px;
+transition: background 0.2s;
+}
+
+.email-form button:hover { background: var(--purple-dark); }
+
+.email-caption {
+font-size: 0.78rem;
+color: #b0adc0;
+margin-top: 10px;
+padding-left: 20px;
+}
+
+.how-card {
+background: var(--card-bg);
+border-radius: var(--radius);
+padding: 36px;
+box-shadow: var(--shadow);
+backdrop-filter: blur(8px);
+}
+
+.how-card .section-label { margin-bottom: 24px; }
+
+.step {
+padding-bottom: 22px;
+margin-bottom: 22px;
+border-bottom: 1px solid rgba(200,182,226,0.3);
+transition: padding-left 0.25s;
+}
+
+.step:hover { padding-left: 6px; }
+.step:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+.step-num {
+font-size: 0.68rem;
+font-weight: 700;
+letter-spacing: 0.18em;
+color: var(--purple);
+margin-bottom: 5px;
+}
+
+.step-title {
+font-size: 1rem;
+font-weight: 700;
+color: var(--text);
+margin-bottom: 5px;
+}
+
+.step-body {
+font-size: 0.9rem;
+color: var(--text-soft);
+line-height: 1.7;
+}
+
+.benefits-section {
+background: var(--bg);
+position: relative;
+overflow: hidden;
+}
+
+.benefits-blob {
+width: 500px; height: 500px;
+background: radial-gradient(circle, #f4acb7 0%, #ffd6a5 60%, transparent 100%);
+top: -100px; left: 50%;
+transform: translateX(-50%);
+}
+
+.benefits-header {
+text-align: center;
+margin-bottom: 56px;
+position: relative;
+z-index: 2;
+}
+
+.benefits-grid {
+position: relative;
+z-index: 2;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 20px;
+}
+
+.benefit-card {
+background: var(--card-bg);
+border-radius: var(--radius);
+padding: 36px 28px;
+box-shadow: var(--shadow);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+backdrop-filter: blur(8px);
+}
+
+.benefit-card:hover {
+transform: scale(1.04) translateY(-4px);
+box-shadow: var(--shadow-hover);
+}
+
+.benefit-num {
+font-size: 2.8rem;
+font-weight: 800;
+color: var(--purple-light);
+line-height: 1;
+margin-bottom: 18px;
+}
+
+.benefit-card h4 {
+font-size: 1.05rem;
+font-weight: 700;
+color: var(--text);
+margin-bottom: 12px;
+}
+
+.benefit-card p {
+font-size: 0.9rem;
+color: var(--text-soft);
+line-height: 1.75;
+}
+
+.about-section {
+position: relative;
+background: var(--bg-alt);
+overflow: hidden;
+}
+
+.about-blob {
+width: 450px; height: 450px;
+background: radial-gradient(circle, #c8b6e2 0%, #f4acb7 60%, transparent 100%);
+bottom: -120px; right: -80px;
+}
+
+.about-grid {
+position: relative;
+z-index: 2;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: start;
+}
+
+.about-quote {
+font-size: clamp(1rem, 1.6vw, 1.18rem);
+font-weight: 500;
+font-style: italic;
+line-height: 1.85;
+color: var(--text);
+border-left: 4px solid var(--purple-light);
+padding-left: 24px;
+margin-bottom: 28px;
+}
+
+.about-closing {
+font-size: 1rem;
+color: var(--text-soft);
+line-height: 1.85;
+}
+
+.pillar {
+margin-bottom: 28px;
+padding: 24px;
+background: var(--card-bg);
+border-radius: 14px;
+box-shadow: var(--shadow);
+transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pillar:hover {
+transform: translateY(-3px);
+box-shadow: var(--shadow-hover);
+}
+
+.pillar-label {
+font-size: 0.68rem;
+font-weight: 700;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(--purple);
+margin-bottom: 10px;
+display: block;
+}
+
+.pillar p {
+font-size: 0.93rem;
+color: var(--text-soft);
+line-height: 1.8;
+}
 
 .team-section {
-background: linear-gradient(180deg, #1c0022 0%, #0d000f 100%);
-padding: 100px 0;
+background: var(--bg);
+position: relative;
+overflow: hidden;
+}
+
+.team-blob {
+width: 500px; height: 400px;
+background: radial-gradient(circle, #ffd6a5 0%, #c8b6e2 60%, transparent 100%);
+top: 0; right: -100px;
 }
 
 .team-header {
 text-align: center;
-margin-bottom: 64px;
+margin-bottom: 56px;
+position: relative;
+z-index: 2;
 }
 
 .team-grid {
+position: relative;
+z-index: 2;
 display: grid;
 grid-template-columns: repeat(5, 1fr);
-gap: 28px;
+gap: 24px;
+margin-top: 40px;
+margin-bottom: 0;
 }
 
 .team-card {
@@ -658,25 +600,25 @@ display: flex;
 flex-direction: column;
 align-items: center;
 text-align: center;
-transition: transform 0.3s ease;
+background: var(--card-bg);
+border-radius: var(--radius);
+padding: 32px 20px 28px;
+box-shadow: var(--shadow);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .team-card:hover {
 transform: translateY(-8px);
+box-shadow: var(--shadow-hover);
 }
 
 .team-photo-wrap {
-width: 140px;
-height: 140px;
+width: 110px;
+height: 110px;
 border-radius: 50%;
-padding: 2px;
-background: var(--gradient);
-margin-bottom: 20px;
-transition: box-shadow 0.3s ease;
-}
-
-.team-card:hover .team-photo-wrap {
-box-shadow: 0 0 0 2px var(--purple-light), 0 12px 36px rgba(99,5,112,0.4);
+padding: 3px;
+background: linear-gradient(135deg, #c8b6e2, #ffb5a0);
+margin-bottom: 18px;
 }
 
 .team-photo-wrap img {
@@ -689,35 +631,261 @@ display: block;
 }
 
 .team-name {
-font-size: 1rem;
-font-weight: 600;
-color: var(--white);
+font-size: 0.95rem;
+font-weight: 700;
+color: var(--text);
 margin-bottom: 6px;
 }
 
 .team-role {
-font-size: 0.75rem;
-font-weight: 500;
-letter-spacing: 0.14em;
+font-size: 0.72rem;
+font-weight: 600;
+letter-spacing: 0.12em;
 text-transform: uppercase;
-color: var(--purple-light);
+color: var(--purple);
 }
 
-@media (max-width: 900px) {
-.team-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.mentor-block {
+position: relative;
+z-index: 2;
+background: linear-gradient(135deg, rgba(200,182,226,0.2) 0%, rgba(255,181,160,0.15) 100%);
+border-radius: var(--radius);
+padding: 40px;
+display: flex;
+align-items: center;
+gap: 36px;
+max-width: 600px;
+margin: 0 auto 0;
+box-shadow: var(--shadow);
+}
+
+.mentor-photo {
+width: 110px;
+height: 110px;
+border-radius: 50%;
+padding: 3px;
+background: linear-gradient(135deg, var(--purple), var(--peach));
+flex-shrink: 0;
+}
+
+.mentor-photo img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: top;
+border-radius: 50%;
+}
+
+.mentor-tag {
+font-size: 0.68rem;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(--purple);
+background: rgba(123,94,167,0.1);
+padding: 4px 12px;
+border-radius: 100px;
+display: inline-block;
+margin-bottom: 8px;
+}
+
+.mentor-name {
+font-size: 1.25rem;
+font-weight: 800;
+color: var(--text);
+margin-bottom: 4px;
+}
+
+.mentor-title {
+font-size: 0.88rem;
+color: var(--text-soft);
+}
+
+.contact-section {
+background: var(--bg-alt);
+position: relative;
+overflow: hidden;
+}
+
+.contact-blob {
+width: 400px; height: 400px;
+background: radial-gradient(circle, #c8b6e2 0%, #f4acb7 60%, transparent 100%);
+bottom: -100px; right: -80px;
+}
+
+.contact-grid {
+position: relative;
+z-index: 2;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+margin-bottom: 64px;
+}
+
+.contact-heading {
+font-size: 2rem;
+font-weight: 800;
+color: var(--text);
+margin-bottom: 14px;
+}
+
+.contact-body {
+font-size: 0.95rem;
+color: var(--text-soft);
+line-height: 1.8;
+margin-bottom: 28px;
+}
+
+.contact-row {
+font-size: 0.9rem;
+color: var(--text-soft);
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.contact-row strong {
+font-size: 0.68rem;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--purple);
+background: rgba(123,94,167,0.1);
+padding: 3px 10px;
+border-radius: 100px;
+white-space: nowrap;
+}
+
+.socials {
+display: flex;
+gap: 12px;
+margin-top: 28px;
+}
+
+.socials a {
+font-size: 0.82rem;
+font-weight: 600;
+color: var(--purple);
+background: rgba(123,94,167,0.08);
+padding: 8px 18px;
+border-radius: 100px;
+transition: background 0.2s, transform 0.2s;
+}
+
+.socials a:hover {
+background: var(--purple);
+color: var(--white);
+transform: translateY(-2px);
+}
+
+.newsletter-label {
+font-size: 1.6rem;
+font-weight: 800;
+color: var(--text);
+margin-bottom: 12px;
+}
+
+.newsletter-body {
+font-size: 0.94rem;
+color: var(--text-soft);
+line-height: 1.78;
+margin-bottom: 28px;
+}
+
+.footer-bar {
+position: relative;
+z-index: 2;
+padding-top: 32px;
+border-top: 1px solid rgba(200,182,226,0.35);
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 16px;
+}
+
+.footer-bar img { height: 30px; }
+.footer-bar p { font-size: 0.78rem; color: var(--text-soft); }
+
+.footer-links { display: flex; gap: 20px; }
+
+.footer-links a {
+font-size: 0.78rem;
+color: var(--text-soft);
+transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--purple); }
+
+.fade-in {
+opacity: 0;
+transform: translateY(28px);
+transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-in.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+
+.hero-left > * {
+opacity: 0;
+transform: translateY(20px);
+animation: heroIn 0.7s ease forwards;
+}
+
+.hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.22s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.34s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.46s; }
+.hero-left > *:nth-child(5) { animation-delay: 0.58s; }
+
+.hero-right {
+opacity: 0;
+animation: heroIn 0.9s ease 0.4s forwards;
+}
+
+@keyframes heroIn {
+to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 960px) {
+.container { padding: 0 28px; }
+nav { padding: 14px 28px; }
+.nav-links { display: none; }
+.hero { padding: 100px 28px 70px; }
+.hero-inner { grid-template-columns: 1fr; gap: 48px; }
+.hero-right { order: -1; }
+.hero-mockup { max-width: 260px; margin: 0 auto; }
+.product-grid { grid-template-columns: 1fr; gap: 40px; }
+.benefits-grid { grid-template-columns: 1fr 1fr; }
+.about-grid { grid-template-columns: 1fr; gap: 40px; }
+.team-grid { grid-template-columns: repeat(3, 1fr); }
+.contact-grid { grid-template-columns: 1fr; gap: 40px; }
+.mentor-block { flex-direction: column; text-align: center; }
 }
 
 @media (max-width: 560px) {
-.team-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.benefits-grid { grid-template-columns: 1fr; }
+.team-grid { grid-template-columns: repeat(2, 1fr); }
+.btn-row { flex-direction: column; }
+.email-form { flex-direction: column; border-radius: var(--radius); }
+.footer-bar { flex-direction: column; text-align: center; }
+.footer-links { justify-content: center; }
 }
-
 </style>
 </head>
 <body>
 
 <nav>
   <a href="#" class="nav-logo">
-    <img src="addapt-transparent-white.png" alt="Addapt">
+    <img src="addapt-clear.png" alt="Addapt">
   </a>
   <div class="nav-links">
     <a href="#product">Product</a>
@@ -729,25 +897,36 @@ color: var(--purple-light);
 </nav>
 
 <section class="hero" id="home">
-  <div class="hero-content" style="display:flex;flex-direction:column;align-items:center;">
-  <p class="eyebrow">Addapt presents CrySense</p>
-  <h1>Your baby is telling you something. <strong>Now you can understand.</strong></h1>
-  <p class="hero-sub">CrySense listens to your baby's cries and tells you exactly what they need, so you can respond with calm and confidence instead of guesswork.</p>
-  <div class="btn-row">
-    <a href="#product" class="btn-fill">Discover CrySense</a>
-    <a href="#about" class="btn-ghost">Our Story</a>
-  </div>
-  <span class="hero-tagline">Smart childcare for every parent, not just the ones who can afford it.</span>
+  <div class="blob hero-blob-1"></div>
+  <div class="blob hero-blob-2"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <span class="hero-eyebrow">Addapt presents CrySense</span>
+      <h1>Your baby is telling you something. <span>Now you can understand.</span></h1>
+      <p class="hero-sub">CrySense listens to your baby's cries and tells you exactly what they need, so you can respond with calm and confidence instead of guesswork.</p>
+      <div class="btn-row">
+        <a href="#product" class="btn-fill">Discover CrySense</a>
+        <a href="#about" class="btn-ghost">Our Story</a>
+      </div>
+      <p class="hero-tagline">Smart childcare for every parent, not just the ones who can afford it.</p>
+    </div>
+    <div class="hero-right">
+      <img src="crysense-mockup.png" alt="CrySense App" class="hero-mockup">
+    </div>
   </div>
 </section>
 
 <section class="product-section" id="product">
+  <div class="blob product-blob"></div>
+  <div class="blob product-blob-2"></div>
   <div class="container">
     <div class="product-grid">
       <div class="fade-in">
         <span class="section-label">The Product</span>
+        <div class="crysense-logo-row">
+          <img src="crysense-logo-transparent.png" alt="CrySense">
+        </div>
         <p class="product-concept">Google Translator for your crying infants.</p>
-        <p class="product-name">CrySense</p>
         <p class="product-body">Every parent knows the exhaustion of not knowing why their baby is crying. CrySense changes that. A small smart sound sensor listens to your baby and instantly sends you a notification with a care suggestion, whether they are hungry, uncomfortable, or just need to be held.</p>
         <p class="product-body">No expensive monitor required. CrySense pairs an affordable Arduino-based sensor with a free app, making smart infant care accessible to every family.</p>
         <div class="email-form">
@@ -756,7 +935,7 @@ color: var(--purple-light);
         </div>
         <p class="email-caption">Be the first to know when CrySense launches.</p>
       </div>
-      <div class="how-it-works-card fade-in fade-in-delay-2">
+      <div class="how-card fade-in fade-in-delay-2">
         <span class="section-label">How It Works</span>
         <div class="step">
           <p class="step-num">01</p>
@@ -779,30 +958,30 @@ color: var(--purple-light);
 </section>
 
 <section class="benefits-section" id="benefits">
+  <div class="blob benefits-blob"></div>
   <div class="container">
     <div class="benefits-header fade-in">
       <span class="section-label">Why CrySense</span>
       <h2 class="section-title">Built around what parents actually need.</h2>
-      <div class="divider"></div>
     </div>
     <div class="benefits-grid">
       <div class="benefit-card fade-in fade-in-delay-1">
-        <span class="benefit-num">01</span>
+        <div class="benefit-num">01</div>
         <h4>Real-Time Cry Analysis</h4>
         <p>AI-powered diagnostics interpret your baby's cry and tell you exactly what they need the moment it happens, no more guessing.</p>
       </div>
       <div class="benefit-card fade-in fade-in-delay-2">
-        <span class="benefit-num">02</span>
+        <div class="benefit-num">02</div>
         <h4>Hands-Free Monitoring</h4>
         <p>The sensor runs automatically in the background. Do your chores, rest, or work, and only step in when your baby actually needs you.</p>
       </div>
       <div class="benefit-card fade-in fade-in-delay-3">
-        <span class="benefit-num">03</span>
+        <div class="benefit-num">03</div>
         <h4>Intelligent Care Suggestions</h4>
         <p>CrySense does not just alert you, it tells you what to do. Our care assistant AI guides you with practical, context-aware suggestions every time.</p>
       </div>
       <div class="benefit-card fade-in fade-in-delay-4">
-        <span class="benefit-num">04</span>
+        <div class="benefit-num">04</div>
         <h4>Affordable for Every Family</h4>
         <p>A low-cost Arduino sensor and a free or budget-friendly app mean you do not need to spend Php 10,000 to give your baby the best care.</p>
       </div>
@@ -811,18 +990,19 @@ color: var(--purple-light);
 </section>
 
 <section class="about-section" id="about">
+  <div class="blob about-blob"></div>
   <div class="container">
     <div class="about-grid">
       <div class="fade-in">
         <span class="section-label">Our Story</span>
-        <h2 class="section-title" style="margin-bottom: 32px;">Why we built CrySense.</h2>
+        <h2 class="section-title" style="margin-bottom: 28px;">Why we built CrySense.</h2>
         <p class="about-quote">CrySense was founded by a team driven by one goal: to create reliable and meaningful solutions for modern childcare. The idea came from recognizing a common struggle many parents face, the exhausting trial-and-error phase of trying to understand a baby's cries. Seeing how this leads to stress, uncertainty, and sleepless nights inspired us to take action.</p>
         <p class="about-closing">We wanted to build something that could truly support parents, reduce their anxiety, and help them respond to their baby's needs with confidence. CrySense is that something.</p>
       </div>
       <div class="fade-in fade-in-delay-2">
         <div class="pillar">
           <span class="pillar-label">Purpose</span>
-          <p>CrySense exists to support parents by reducing the stress and uncertainty of understanding their baby's cries, empowering guardians with reliable insights to respond with confidence and provide better care for their infants.</p>
+          <p>CrySense exists to support parents by reducing the stress and uncertainty of understanding their baby's cries, empowering guardians with reliable insights to respond with confidence and provide better care.</p>
         </div>
         <div class="pillar">
           <span class="pillar-label">Mission</span>
@@ -838,11 +1018,21 @@ color: var(--purple-light);
 </section>
 
 <section class="team-section" id="team">
+  <div class="blob team-blob"></div>
   <div class="container">
     <div class="team-header fade-in">
       <span class="section-label">The People Behind It</span>
       <h2 class="section-title">Meet the Addapt team.</h2>
-      <div class="divider"></div>
+    </div>
+    <div class="mentor-block fade-in">
+      <div class="mentor-photo">
+        <img src="mentor.jpg" alt="Joshua C. Reyes">
+      </div>
+      <div>
+        <span class="mentor-tag">Startup Mentor</span>
+        <p class="mentor-name">Joshua C. Reyes</p>
+        <p class="mentor-title">Instructor, Pangasinan State University</p>
+      </div>
     </div>
     <div class="team-grid">
       <div class="team-card fade-in fade-in-delay-1">
@@ -885,17 +1075,18 @@ color: var(--purple-light);
 </section>
 
 <section class="contact-section" id="contact">
+  <div class="blob contact-blob"></div>
   <div class="container">
     <div class="contact-grid">
       <div class="fade-in">
         <span class="section-label">Get in Touch</span>
         <h3 class="contact-heading">We would love to hear from you.</h3>
         <p class="contact-body">Have questions about CrySense, partnership inquiries, or just want to follow our journey? Reach out to the Addapt team.</p>
-        <div class="contact-row"><strong>Email</strong>hello@addapt.ph</div>
+        <div class="contact-row"><strong>Email</strong>CrySense123@gmail.com</div>
         <div class="contact-row"><strong>Phone</strong>09100984747</div>
         <div class="contact-row"><strong>Find us</strong>Online via social media and partner clinics</div>
         <div class="socials">
-          <a href="https://www.facebook.com/profile.php?id=61589774060458" target="_blank">Facebook</a>
+          <a href="https://www.facebook.com/profile.php?id=61589774060458&rdid=Hrd4xocUwzpBZdaH&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CoUHdFsgj%2F#" target="_blank">Facebook</a>
         </div>
       </div>
       <div class="fade-in fade-in-delay-2">
@@ -909,8 +1100,8 @@ color: var(--purple-light);
       </div>
     </div>
     <div class="footer-bar">
-      <img src="addapt-transparent-white.png" alt="Addapt">
-      <p>2024 Addapt. All rights reserved.</p>
+      <img src="addapt-clear.png" alt="Addapt">
+      <p>2026 Addapt. All rights reserved.</p>
       <div class="footer-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
@@ -922,11 +1113,9 @@ color: var(--purple-light);
 <script>
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
@@ -937,12 +1126,12 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     e.preventDefault();
     const target = document.querySelector(href);
     if (!target) return;
-    document.body.style.transition = 'opacity 0.25s ease';
+    document.body.style.transition = 'opacity 0.22s ease';
     document.body.style.opacity = '0';
     setTimeout(() => {
       target.scrollIntoView({ behavior: 'smooth' });
       document.body.style.opacity = '1';
-    }, 250);
+    }, 220);
   });
 });
 </script>
